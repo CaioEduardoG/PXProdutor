@@ -1,6 +1,6 @@
 FROM node:8
 
-ENV PORT=82
+ENV PORT=80
 ENV NOME_FILA=Colaboradores
 ENV NOMETABELA=tabela_colaboradores
 
@@ -12,6 +12,6 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 82
+EXPOSE 80
 
 CMD [ "node", "index.js" ]
