@@ -3,6 +3,10 @@ const bodyParse = require('body-parser');
 const cors = require('cors');
 const aws = require('aws-sdk');
 
+if(`${process.env.NODE_ENV}` === "dev"){
+    require('dotenv').config();
+}
+
 if(!aws.config.region){
     aws.config.update({
         region: 'us-east-2'
@@ -39,7 +43,7 @@ let pegarURL_fila = async () => {
     });
 };
 
-app.post("/colaboradores", (req, res) => {
+app.post("/api/colaboradores", (req, res) => {
     
     var nomesClientes = [];
     req.body.clientes.forEach(element => {
@@ -95,7 +99,7 @@ let enviarMensagem = colaborador => {
     });
 }
 
-app.get("/colaboradores", (req, res) => {
+app.get("/api/colaboradores", (req, res) => {
     var params = {
         TableName: `${process.env.NOMETABELA}`
     }    
