@@ -116,6 +116,10 @@ app.get("/api/colaboradores", (req, res) => {
 
 });
 
+app.get("/healthcheck", (req,res) => {
+    return res.status(200).json("Healthcheck okay!");
+});
+
 const port = `${process.env.PORT}`;
 app.listen(port);
 console.log("Servidor rodando local na porta ", port);
